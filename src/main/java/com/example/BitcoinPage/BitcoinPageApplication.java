@@ -20,4 +20,9 @@ public class BitcoinPageApplication {
 		return String.format("Hello %s!", name);
 	}
 
+	@GetMapping("/bitcoinpage")
+	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+		return "This is the bitcoin page. This will be the home of various relevant information of bitcoin";
+	}
+
 }
