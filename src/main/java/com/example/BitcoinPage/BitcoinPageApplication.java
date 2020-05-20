@@ -14,6 +14,10 @@ public class BitcoinPageApplication {
 		SpringApplication.run(BitcoinPageApplication.class, args);
 	}
 
+	@RequestMapping("/")
+	public String index() {
+		return "This is the frontpage";
+	}
 
 	@GetMapping("/hello")
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
