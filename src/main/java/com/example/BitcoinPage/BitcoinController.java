@@ -19,4 +19,13 @@ public class BitcoinController {
         return "This is the bitcoin page. This will be the home of various relevant information of bitcoin";
     }
 
+    @GetMapping("/bitcoinAverageValue")
+    public String bitcoinAverageValue(@RequestParam(value = "amountAveragedOver", defaultValue = "100") String amountAveragedOver) {
+        BitcoinAverageDTO response = BitfinexCommunication.getBitcoinAveragePrice(Integer.parseInt(amountAveragedOver));
+        if(response != null) {
+            return String.format("The average price of bitcoin from the most recent %d transactions is %d", response.getAmountAveragedOver(), response.getAverage());
+        }
+        return "An error occurred";
+    }
+
 }
